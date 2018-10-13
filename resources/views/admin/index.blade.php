@@ -3,7 +3,8 @@
 @section ('content')
 
     @include ('admin.addModal')
-    
+    @include ('admin.editModal')
+       
     <h1>
         Dodaj novi kupon:
         <span>
@@ -33,7 +34,6 @@
                         <button type="button" class="btn btn-primary" data-name="{{ $coupon->name }}" data-number="{{ $coupon->number }}" data-sale="{{ $coupon->sale }}" data-id="{{ $coupon->id }}" data-toggle="modal" data-target="#editCouponModal">
                             Izmijeni
                         </button>
-                        @include ('admin.editModal')
                         <a href="{{ route('coupon.delete', $coupon->id) }}">
                             <button type="submit" class="btn btn-primary">
                                 Obriši
