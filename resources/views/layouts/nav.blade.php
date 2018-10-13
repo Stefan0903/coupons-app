@@ -3,18 +3,18 @@
     <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
         <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
-                </li>
                 @if(Auth::check())
+                    <li class="nav-item">
+                        <a class="nav-link" href="/home">Home <span class="sr-only">(current)</span></a>
+                    </li>
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('coupons.index')}}">My coupons<span class="sr-only"></span></a>
                     </li> 
-                @endif
-                @if (Auth::user()->hasRole('admin'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="/admin">{{ __('Admin') }}</a>
-                    </li>
+                    @if (Auth::user()->hasRole('admin'))
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin">{{ __('Admin') }}</a>
+                        </li>
+                    @endif
                 @endif
             </ul>
             <ul class="navbar-nav ml-auto">

@@ -8,6 +8,12 @@ use App\Coupon;
 
 class CouponsController extends Controller
 {
+    public function start()
+    {
+        $coupons = Coupon::all();
+        return view('home', compact('coupons'));
+    }
+
     public function index()
     {
         return view('myCoupons', ['user' => Auth::user()]);
@@ -32,5 +38,4 @@ class CouponsController extends Controller
 
         return redirect()->route('home');
     }
-
 }

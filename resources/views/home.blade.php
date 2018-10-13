@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $coupon->sale }}</h5>
                             <p class="card-text">{{ $coupon->name }}</p>
-                            <a href="{{ route('coupon.subscribe', $coupon->id) }}" class="btn btn-primary">Prijavi se za popust</a>
+                            <a href="{{ Auth::check() ? route('coupon.subscribe', $coupon->id) : route('login') }}" class="btn btn-primary">Prijavi se za popust</a>
                         </div>
                     </div>
                 </div>
