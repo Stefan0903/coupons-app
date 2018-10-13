@@ -1,9 +1,9 @@
 @extends ('layouts.master')
 
 @section ('content')
-    <h1>Dostupni kuponi</h1>
+    <h1>Kupljeni kuponi</h1>
     <hr>
-    @foreach ($coupons->chunk(3) as $chunk)
+    @foreach ($user->coupons->chunk(3) as $chunk)
         <div class="row">
             @foreach ($chunk as $coupon)
                 <div class="col-lg-4 mb-4">
@@ -12,7 +12,7 @@
                         <div class="card-body">
                             <h5 class="card-title">{{ $coupon->sale }}</h5>
                             <p class="card-text">{{ $coupon->name }}</p>
-                            <a href="{{ route('coupon.subscribe', $coupon->id) }}" class="btn btn-primary">Prijavi se za popust</a>
+                            {{-- <a href="/coupon/{{ $coupon->id }}" class="btn btn-primary">Prijavi se za popust</a> --}}
                         </div>
                     </div>
                 </div>

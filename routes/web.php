@@ -19,8 +19,17 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+Route::get('/myCoupons', 'CouponsController@index')->name('coupons.index');
+
+Route::get('/coupon/subscribe/{coupon}', 'CouponsController@subscribe')->name('coupon.subscribe');
+
+Route::get('/coupon/{coupon}', 'CouponsController@show')->name('coupon.show');
+
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function(){
-    Route::get('/admin', 'AdminsController@index');
+    Route::get('/', 'AdminsController@index')->name('admin.index');
+    Route::post('/', 'AdminsController@store')->name('coupon.store');
+    Route::patch('/coupons', 'AdminsController@update')->name('coupon.update');
+    Route::get('/coupons/{coupon}', 'AdminsController@destroy')->name('coupon.delete');
 });
 
 

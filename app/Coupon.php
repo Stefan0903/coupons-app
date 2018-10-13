@@ -12,6 +12,11 @@ class Coupon extends Model
      * @var array
      */
     protected $fillable = [
-        'name', 'sale', 'image',
+        'user_id', 'name', 'sale', 'image', 'number'
     ];
+
+    public function users()
+    {
+        return $this->belongsToMany('App\User', 'coupons_users', 'coupon_id', 'user_id');
+    }
 }
