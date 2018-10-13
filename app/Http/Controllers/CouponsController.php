@@ -13,11 +13,6 @@ class CouponsController extends Controller
         return view('myCoupons', ['user' => Auth::user()]);
     }
 
-    public function show(Coupon $coupon)
-    {
-        return view('coupons.show', compact('coupon'));
-    }
-
     public function subscribe(Coupon $coupon)
     {
         $coupon->number = $coupon->number - 1;
@@ -28,7 +23,7 @@ class CouponsController extends Controller
         
         $user->coupons()->attach($coupon->id);
 
-        return view('myCoupons', compact('user'));
+        return redirect()->route('coupons.index', compact('user'));
     }
 
     public function delete(Coupon $coupon)
