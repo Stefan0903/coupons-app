@@ -15,13 +15,11 @@ Route::get('/', 'CouponsController@start');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/myCoupons', 'CouponsController@index')->name('coupons.index');
-
-Route::get('/coupon/subscribe/{coupon}', 'CouponsController@subscribe')->name('coupon.subscribe');
-
-Route::get('/coupon/{coupon}', 'CouponsController@show')->name('coupon.show');
+Route::group(['middleware' => ['role:zaposleni|admin']], function(){
+    Route::get('/home', 'HomeController@index')->name('home');
+    Route::get('/myCoupons', 'CouponsController@index')->name('coupons.index');
+    Route::get('/coupon/subscribe/{coupon}', 'CouponsController@subscribe')->name('coupon.subscribe');
+});
 
 Route::group(['prefix' => 'admin', 'middleware' => ['role:admin']], function(){
     Route::get('/', 'AdminsController@index')->name('admin.index');
